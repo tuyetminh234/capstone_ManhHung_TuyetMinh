@@ -110,13 +110,21 @@
 
       /* FIND US  */
       .contact-grid {
-        
         grid-template-columns: 2fr 1fr;
         grid-gap: 40px;
       }
       .d-grid {
     display: grid;
-}
+  }
+  @media (max-width: 992px) {
+    .d-grid {
+      display:grid;
+    }
+    .contact-grid {
+      grid-template-columns: 1fr;
+      grid-gap: 20px !important
+    }
+  }
       .twice-two {
         display: grid;
         grid-gap: 20px;
