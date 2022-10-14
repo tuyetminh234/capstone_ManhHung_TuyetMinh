@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+
+    <!-- Google fonts -->  
+    <link href="//fonts.googleapis.com/css2?family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- BS 4 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="./asset/lightbox2-2.11.3/dist/css/lightbox.css">
+
+    <link rel="stylesheet" href="./asset/respon.css">
+    <style>
+
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }    
+    body {
+      margin: 0;
+      font-family: 'Jost', sans-serif;
+      /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+      text-align: left;
+      background-color: #fff;
+    }
+    div{
+      display: block;
+    }
+    .container {
+      width: 100%;
+      max-width: 1150px;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+      font-family: 'Jost', sans-serif;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns:repeat( 3,1fr);
+      max-width: 1150px;
+      gap: 30px;
+    }
+    .text-left {
+      text-align: left !important;
+    }
+    .text-center{
+      text-align: center !important;
+    }
+    .top-title {
+      font-size: 18px;
+      font-weight: 400;
+      text-transform: uppercase;
+      line-height: 2em;
+      letter-spacing: 1px;
+      color: #f53626;
+    }
+    .bot-title {
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 48px;
+      text-transform: capitalize;
+    }
+    .img-fluid{
+      width: 100%;
+      border-radius: 10px;
+      height: auto;
+    }
+    .nospace {
+      font-size: 60px;
+    } 
+
+    img.img-fluid {
+    margin-bottom: 30px;
+    }
+
+    .item {
+      position: relative;
+      overflow: hidden;
+    }
+    .item::before {
+      content: "";
+      width: 50%;
+      height: 90%;
+      position: absolute;
+      top: 0;
+      left: -100%;
+      display: block;
+      background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 100%
+    );
+      transform: skewX(-25deg);
+      transition: all 0.75s;
+    }
+
+    .item:hover::before {
+      left: 125%;
+    }
+    header {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header__content {
+    margin: auto;
+    
+
+}
+.header__pooch .navbar-brand a {
+    font-size: 34px;
+    color:#189a46;
+    font-weight: 700;
+    text-decoration: none;
+}
+.header__pooch .navbar-brand a:hover {
+    color:#189a46;
+    
+}
+
+#poochNavbar .nav-link i {
+    font-size: 12px;
+}
+
+/* trước hover  */
+#poochNavbar .nav-link::after {
+    content: '';
+    width: 0;
+    height: 1.5px;
+    background: #189a46;
+    display: block;
+    transition: all 0.5s;
+}
+#poochNavbar .nav-link {
+    color: #000;
+}
+
+/* sau hover  */
+#poochNavbar  .nav-link:hover::after {
+    width: 100%;
+}
+@media (max-width:991px) {
+  #poochNavbar  .nav-link:hover::after {
+    width: 0;
+}
+  
+}
+#poochNavbar  .nav-link:hover {
+    color: #189a46;
+}
+
+#poochNavbar .active .nav-link {
+   color: #189a46;
+}
+
+#poochNavbar a {
+    padding: 0 15px;
+    font-size: 18px;
+}
+.header__pooch .navbar-brand {
+    padding-left: 70px;
+}
+.header__pooch .navbar-nav {
+  text-align: center;
+    padding: 5px 70px 0 0;
+}
+.navbar-light .navbar-toggler {
+      color: white;  
+      background-color: #189A46;
+    }
+
+    /* FOOTER  */
+    footer {
+      background-color: #000c04;
+    }
+
+    .footer .footer-title {
+      color: #fff;
+      font-size: 20px;
+      line-height: 26px;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+
+    .footer .footer-list li {
+      list-style: none;
+      margin-bottom: 5px;
+    }
+
+    .footer .footer-list p,
+    .footer .footer-list a {
+      font-weight: normal;
+      font-size: 16px;
+      color: #696969;
+      line-height: 28px;
+      padding: 0;
+    }
+
+    .footer .footer-list a:hover {
+      color: #fff;
+    }
+
+    .footer .social-icon {
+      margin-top: 3px;
+      padding: 0;
+      list-style: none;
+      overflow: hidden;
+    }
+
+    .footer .social-icon li {
+      display: inline-block;
+      margin-right: 15px;
+      margin-bottom: 0;
+    }
+
+    .footer .social-icon i:hover {
+      color: #fff;
+      transition: all 0.5s;
+    }
+
+    .footer .copy-footer {
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 28px;
+      color: #696969; 
+    }
+
+    .footer .copy-footer a {
+      color: #f53626;
+      opacity: 0.9;
+    }
+
+
+    .page-intro{
+      margin-top: 90px;
+      background: url(./asset/img/banner4.jpg) no-repeat center;
+      background-size: cover;
+      position: relative;
+      align-items: center;
+      padding: 1em 0;
+      z-index: 0;
+      text-align: center;
+    }
+    .page-intro::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      min-height: 100%;
+      left: 0;
+      right: 0;
+      z-index: -1;
+      background-color: #0c0c0c;
+      opacity: .6;
+    }
+    .page-intro h2.title{
+      font-size: 50px;
+      font-weight: 600;
+      color: #fff;
+    } 
+    ul{
+      margin: 0;
+      padding: 0;
+    }
+    .page-intro .title-sub li{
+      font-size: 1.2em;
+      line-height: 1.5;
+      font-weight: 400;
+      color: #fff;
+    }
+    .page-intro .title-sub li span.fa{
+      font-size: 12px;
+      vertical-align: 1px;
+    }
+
+    .color-green{
+      color: #189A46;
+      cursor: pointer
+    }
+
+    .pd-t-50{
+      padding-top: 50px;
+    }
+
+    @media  (max-width :1200px ) {
+      .container-img{
+        padding: 0 80px;
+      }
+    }
+    @media  (max-width :740px ) {
+      .container-img{
+        display: grid;;
+        grid-template-columns: 1fr;
+        padding: 0 80px;
+      }
+    }
+    .lb-data .lb-number {
+        display: block;
+        clear: left;
+        padding-top: 1em;
+        font-size: 1em;
+        color:#f53626;
+    } 
+    .lb-data .lb-caption {
+        font-size: 16px;
+        line-height: 1.8em;
+        color: #fff;
+        letter-spacing: .5px;
+    }
+    #myBody{
+        background-color:white;
+    }
+    #switchButton {
+        background-color: #fff;
+        font-size: 22px;
+        color: #696969;
+        padding: 0;
+    }
+    #switchButton .fa-sun {
+        display: none;
+        
+    }
+    #switchButton .fa-moon {
+        display: block;
+    }
+    /* Dark Theme*/
+    .dark#myBody{
+        background-color:#151414;
+    }
+    .dark #switchButton {
+        background-color: #151414;
+    }
+    .dark #switchButton .fa-sun {
+        display: block;
+        color: #afafaf;
+        font-size: 22px;
+    }
+    .dark #switchButton .fa-moon {
+        display: none;
+    }
+    .dark #poochNavbar .nav-link{
+        color: #ddd;
+    }
+    .dark .header__pooch{
+        background-color: #151515 ;
+    }
+    .dark h3{
+        color: #ddd;
+    }
+    .dark .card {
+        background-color: black;
+        color: white;
+    }
+    .dark .footer .footer-list p {
+        font-weight: normal;
+        font-size: 16px;
+        color: #c8c8c8cc;
+        line-height: 28px;
+        padding: 0;
+    }
+    .dark .footer .footer-list a {
+        font-weight: normal;
+        font-size: 16px;
+        color: #c8c8c8cc;
+        line-height: 28px;
+        padding: 0;
+    }
+    .dark .bg-light {
+  background-color: #151515 !important;
+}
+    .backToTop {
+    width: 60px;
+    height: 60px;
+    background: #189A46;
+    border-radius: 8px;
+    line-height: 60px;
+    text-align: center;
+    display: block;
+    position: fixed;
+    right: 25px;
+    bottom: 100px;
+    color: #fff;
+    transition: all .2s;
+
+    opacity: 0;
+    overflow: hidden;
+    border-radius: 50px;
+    transition: 0.3s ease-out;
+  }
+  .cd-top--is-visible {
+    visibility: visible;
+    opacity: 1;
+  }
+
+
+    </style>
+</head>
+<body id="myBody">
+  <header class="header__pooch">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <h2 class="navbar-brand">
+        <a href="index.html">Pooch Care</a>
+
+      </h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#poochNavbar"
+        aria-controls="poochNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+      <!-- <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+        
+    </button> -->
+
+      <div class="collapse navbar-collapse" id="poochNavbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="blog.html">
+              <span>Blog</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </a>
+
+
+            <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              Blog
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Blog posts</a>
+              <a class="dropdown-item" href="#">Blog Single</a>
+              <a class="dropdown-item" href="#">Landing page</a>
+            </div> -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <div class="container">
+              <div>
+                <button class="btn" id="switchButton" title="Click to switch theme">
+                  <i class="fa-regular fa-moon"></i>
+                  <i class="fa-regular fa-sun"></i>
+                </button>
+              </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </nav>
+  </header>
+  <section class="page-intro">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container ">
+            <h2 class="title">Gallery</h2>
+            <ul class="title-sub">
+                <li class="active"> <span class="color-green"> Home </span><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Gallery </li>
+            </ul>
+        </div>
+    </div>
+  </section>
+  <section class="gallery-content">
+    <div class="gallery-container">
+        <div class="container">
+            <div class="title text-center">
+                <h6 class="top-title pd-t-50">View Gallery</h6>
+                <h3 class="bot-title">Latest Gallery</h3>
+            </div>
+
+            <div class="row container-img grid ">
+              <div class="col-img ">
+                <a href="./asset/img/g1.jpg" data-lightbox="example-set" class=""
+                  data-title="lorem ipsum dolor sit amet">
+                    <div class="item"><img src="./asset/img/g1.jpg" alt="product" class="img-fluid "></div>
+                </a>
+                <a href="./asset/img/g2.jpg" data-lightbox="example-set" class="" data-title="lorem ipsum dolor sit amet">
+                    <div class="item"><img src="./asset/img/g2.jpg" alt="product" class="img-fluid"></div>
+                </a>
+                <a href="./asset/img/g7.jpg" data-lightbox="example-set" class="" data-title="lorem ipsum dolor sit amet">
+                    <div class="item"><img src="./asset/img/g7.jpg" alt="product" class="img-fluid"></div>
+                </a>
+              </div>
+              <div class="col-img">
+                <a href="./asset/img/g3.jpg" data-lightbox="example-set" class=""
+                  data-title="lorem ipsum dolor sit amet">
+                    <div class="item"><img src="./asset/img/g3.jpg" alt="product" class="img-fluid"></div>
+                </a>
+                <a href="./asset/img/g4.jpg" data-lightbox="example-set" class="" data-title="lorem ipsum dolor sit amet">
+                    <div class="item"><img src="./asset/img/g4.jpg" alt="product" class="img-fluid"></div>
+                </a>
+                <a href="./asset/img/g8.jpg" data-lightbox="example-set" class="" data-title="lorem ipsum dolor sit amet">
+                    <div class="item"><img src="./asset/img/g8.jpg" alt="product" class="img-fluid"></div>
+                </a>
+              </div>
+              <div class="col-img">
+                <a href="./asset/img/g5.jpg" data-lightbox="example-set" class=""
+                  data-title="lorem ipsum dolor sit amet">
+                    <div class="item"><img src="./asset/img/g5.jpg" alt="product" class="img-fluid"></div>
+                </a>
+                <a href="./asset/img/g6.jpg" data-lightbox="example-set" class="" data-title="lorem ipsum dolor sit amet">
+                    <div class="item"><img src="./asset/img/g6.jpg" alt="product" class="img-fluid"></div>
+                </a>
+                <a href="./asset/img/g9.jpg" data-lightbox="example-set" class="" data-title="lorem ipsum dolor sit amet">
+                    <div class="item"><img src="./asset/img/g9.jpg" alt="product" class="img-fluid"></div>
+                </a>
+              </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-bg-layer">
+      <div class="container">
+        <div class="row footer-top">
+          <div class="col-lg-6 col-md-5 footer-list mt-5">
+            <h6 class="footer-title">Contact information</h6>
+            <ul>
+              <li>
+                <p>
+                  <strong>Address</strong>
+                  : #135 block, Barnard St. Brooklyn, London 10036, UK
+                </p>
+              </li>
+              <li>
+                <p>
+                  <strong>Phone</strong>
+                  :
+                  <a href="tel:+(12)234-11-24">+(12)234-11-24</a>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <strong>Email</strong>
+                  :
+                  <a href="mailto: example@mail.com "> example@mail.com</a>
+                </p>
+              </li>
+            </ul>
+            <div class="social-footer mt-3">
+              <ul class="social-icon">
+                <li class="facebook">
+                  <a href="#link" title="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                  </a>
+                </li>
+                <li class="twitter">
+                  <a href="#link" title="Twitter">
+                    <i class="fa-brands fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="dribbble">
+                  <a href="#link" title="Dribbble">
+                    <i class="fa-brands fa-dribbble"></i>
+                  </a>
+                </li>
+                <li class="google">
+                  <a href="#link" title="Google">
+                    <i class="fa-brands fa-google"></i>
+                  </a>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-7">
+            <div class="row">
+              <div class="col-sm-4 col-6 footer-list mt-5">
+                <h6 class="footer-title">Company</h6>
+                <ul>
+                  <li>
+                    <a href="about.html">About Us</a>
+                  </li>
+                  <li>
+                    <a href="blog.html">Blog Posts</a>
+                  </li>
+                  <li>
+                    <a href="services.html">Services</a>
+                  </li>
+                  <li>
+                    <a href="#pricing">Pricing</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-4 col-6 footer-list mt-5">
+                <h6 class="footer-title">Quick Links</h6>
+                <ul>
+                  <li>
+                    <a href="contact.html">Contact Us</a>
+                  </li>
+                  <li>
+                    <a href="#signup">Create account</a>
+                  </li>
+                  <li>
+                    <a href="#learn">Care Center</a>
+                  </li>
+                  <li>
+                    <a href="#feedback">Site Feedack</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-4 footer-list mt-5">
+                <h6 class="footer-title">Support</h6>
+                <ul>
+                  <li>
+                    <a href="#URL">All Dogs</a>
+                  </li>
+                  <li>
+                    <a href="#URL">Care Advices</a>
+                  </li>
+                  <li>
+                    <a href="#URL">Care Support</a>
+                  </li>
+                  <li>
+                    <a href="#URL">Veterinary Help</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="midd-footer align-center py-lg-4 py-3 mt-5">
+        <div class="container">
+          <p class="copy-footer text-center">
+            © 2020 Pooch Care. All Rights Reserved. Design by
+            <a href="https://w3layouts.com/">W3Layouts</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </footer>
+
+  <a href="#" class="backToTop cd-top text-replace js-cd-top">
+    <i class="fa fa-arrow-up"></i>
+  </a>
+
+
+  <!-- BACK TO TOP JS -->
+ <script src="./asset/js/main.js"></script>
+ <script src="./asset/js/util.js"></script>
+
+  <script>
+    document.getElementById("switchButton").onclick = function () {
+        document.getElementById("myBody").classList.toggle("dark");
+    };
+</script>
+  <script src="./asset/lightbox2-2.11.3/dist/js/lightbox-plus-jquery.js"></script>
+  <!-- JS BS 4 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
